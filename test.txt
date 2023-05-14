@@ -1,1 +1,18 @@
-Thuật toán KNN
+Thuật toán KNN : Hoàn, Vượng
+
+Thuật toán Naive Bayes : Hào, Hiếu
+    Trong class NaiveBayes:
+
+    init(self): Hàm khởi tạo, khởi tạo biến cpt, X_train, y_train, labels
+    fit(self, X_train, y_train): Hàm để train model với dữ liệu huấn luyện X_train và y_train
+    _cat_prob(self, feat): Hàm tính xác suất của các biến phân loại (categorical variables)
+    _num_prob(self, feat, label, x): Hàm tính xác suất của các biến liên tục (numerical variables)
+    _class_prob(self, label): Hàm tính xác suất của các class trong tập dữ liệu huấn luyện
+    predict(self, X_test): Hàm để dự đoán label của các điểm trong tập dữ liệu X_test
+    score(self, y_true, y_test): Hàm tính toán độ chính xác của model.
+
+So sánh 2 thuật toán KNN và Naive Bayes :
+Hàm min_max_normalization : Chuẩn hóa bằng cách chia mỗi giá trị trong cột cho khoảng cách
+giữa giá trị lớn nhất và giá trị nhỏ nhất của cột.
+
+Hàm z_score_normalization chuẩn hóa bằng cách chia mỗi giá trị trong cột cho độ lệch chuẩn của cột. 

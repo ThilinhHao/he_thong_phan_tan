@@ -4,6 +4,7 @@ import numpy as np
 import pandas as pd
 from sklearn.model_selection import train_test_split
 from time import time
+from memory_profiler import memory_usage
 
 def is_categorical(col):
     if set(col) == set(range(col.unique().shape[0])):
@@ -65,10 +66,17 @@ def main():
     start = time()
     naivebayes_model = NaiveBayes()
     naivebayes_model.fit(X_train, y_train)
+    mem_usage = memory_usage((naivebayes_model.fit, (X_train, y_train)))
     pred = naivebayes_model.predict(X_test)
     stop = time()
+    # tính độ chính xác
     print('Accuracy: '+str(naivebayes_model.score(y_test, pred))+'%')
+    # tính thời gian thực thi thuật toán
     print('Time Elapsed: %.2fs' %(stop-start))
+    # tính số lượng bộ nhớ sử dụng
+    print('Sử dụng bộ nhớ: %s MB' % max(mem_usage))
+    # tính độ ổn định
+    naivebayes_model.display_stability_score(X_train, y_train, n_folds=5)
 
 if __name__ == '__main__':
     main()
